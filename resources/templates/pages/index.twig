@@ -1,0 +1,9 @@
+{% extends 'layouts/base.twig' %}
+{% block content %}
+    <div class="row">
+        <div class="col">
+            <h1>{{ title ?? post.title }}</h1>
+            {{ content ?? post.content }}
+        </div>
+    </div>
+{% endblock %}

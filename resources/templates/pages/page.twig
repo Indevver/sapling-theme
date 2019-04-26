@@ -1,0 +1,12 @@
+{% extends 'layouts/base.twig' %}
+{% block content %}
+    {% for row in post.get_field('Section') %}
+        {% include 'builder/Columns/columns-'~row.Columns~'.twig' %}
+    {% endfor %}
+    <div class="row">
+        <div class="col">
+            <h1>{{ title }}</h1>
+            {{ post.content }}
+        </div>
+    </div>
+{% endblock %}
