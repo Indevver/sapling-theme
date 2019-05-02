@@ -13,7 +13,30 @@ use Sapling\ACF\Fields\Text;
 use Sapling\ACF\Fields\Title;
 use Sapling\ACF\Fields\Video;
 use Sapling\ACF\Tabs\Advanced;
+use Sapling\ACF\Tabs\Background;
 use Sapling\ACF\Tabs\Design;
+use Sapling\ACF\Tabs\Heading;
+use Sapling\ACF\Tabs\Spacing;
+use Sapling\ACF\Tabs\Text as TextTab;
+
+add_filter('sapling_acf_builder', function($section){
+    $text_colors = apply_filters('sapling_acf_builder_text_colors', []);
+    $background_colors = apply_filters('sapling_acf_builder_background_colors', []);
+
+    $advancedTab = new Advanced();
+    $backgroundTab = new Background($background_colors);
+    $spaceAlignTab = new Spacing();
+    $textTab = new TextTab($text_colors);
+    $headingTab = new Heading();
+
+    $headingTab->addTab($section);
+    $textTab->addTab($section);
+    $backgroundTab->addTab($section);
+    $spaceAlignTab->addTab($section);
+    $advancedTab->addTab($section);
+
+    return $section;
+});
 
 add_filter('sapling_acf_builder_text_colors', function(array $colors): array{
     return [
@@ -84,8 +107,6 @@ add_filter('sapling_acf_builder_fields', function(array $fields): array {
     $advancedTab->addTab($fields['hero']);
     $fields['image'] = new Image();
     $advancedTab->addTab($fields['image']);
-    $fields['quote'] = new Quote();
-    $advancedTab->addTab($fields['quote']);
     $fields['slider'] = new Slider();
     $advancedTab->addTab($fields['slider']);
     $fields['text'] = new Text();

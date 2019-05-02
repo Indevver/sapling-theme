@@ -1,0 +1,11 @@
+{% extends 'builder/blocks/base.twig' %}
+{% block block_content %}
+    {% for member in item.Members %}
+        <img src="{{ Image(member['Head Shot']).src }}" alt="{{ Image(member['Head Shot']).alt }}" title="{{ Image(member['Head Shot']).title }}"/>
+        <blockquote>{{ member.quote }}</blockquote>
+        <cite>
+            <h2>{{ member.Name }}</h2>
+            <h2>{{ member.Position }}</h2>
+        </cite>
+    {% endfor %}
+{% endblock %}

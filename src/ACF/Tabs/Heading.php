@@ -1,15 +1,21 @@
 <?php
+/**
+ * Created by PhpStorm.
+ * User: rpark
+ * Date: 4/25/2019
+ * Time: 4:36 PM
+ */
+
 namespace Sapling\ACF\Tabs;
 
 
-class Headings
+class Heading
 {
+
     public function addTab(&$builder)
     {
-        $builder->addTab('Headings')
-            ->addImage('Icon')
-            ->addRepeater('Headings')
-            ->addSelect('Size', ['choices' => [
+        $builder->addTab('Heading')
+            ->addSelect('Heading Size', ['choices' => [
                 'h1' => 'Heading 1',
                 'h2' => 'Heading 2',
                 'h3' => 'Heading 3',
@@ -18,7 +24,6 @@ class Headings
                 'h6' => 'Heading 6',
             ]])->setWidth('50')
             ->addText('Heading')->setWidth('50')
-            ->endRepeater()
         ;
     }
 }
