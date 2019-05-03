@@ -33,11 +33,14 @@
                 {% include 'builder/Columns/columns-'~row.Columns~'.twig' %}
             </div>
         </section>
-    {% endfor %}
-    <div class="row">
-        <div class="col">
-            <h1>{{ title }}</h1>
-            {{ post.content }}
+    {% else %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <h1>{{ title }}</h1>
+                    {{ post.content }}
+                </div>
+            </div>
         </div>
-    </div>
+    {% endfor %}
 {% endblock %}
