@@ -15,7 +15,7 @@ use Sapling\ACF\Fields\Video;
 use Sapling\ACF\Tabs\Advanced;
 use Sapling\ACF\Tabs\Background;
 use Sapling\ACF\Tabs\Design;
-use Sapling\ACF\Tabs\Heading;
+use Sapling\ACF\Tabs\Heading as HeadingTab;
 use Sapling\ACF\Tabs\Spacing;
 use Sapling\ACF\Tabs\Text as TextTab;
 
@@ -27,7 +27,7 @@ add_filter('sapling_acf_builder', function($section){
     $backgroundTab = new Background($background_colors);
     $spaceAlignTab = new Spacing();
     $textTab = new TextTab($text_colors);
-    $headingTab = new Heading();
+    $headingTab = new HeadingTab();
 
     $headingTab->addTab($section);
     $textTab->addTab($section);

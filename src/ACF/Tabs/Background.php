@@ -26,14 +26,11 @@ class Background
                 'choices' => [
                     '' => 'None',
                     'solid' => 'Solid',
-                    'gradient' => 'Gradient',
                     'image' => 'Image'
                 ]
             ])
             ->addSelect('Background Color', ['choices' => $this->background_colors])->conditional('Background Type', '==', 'solid')
             ->addImage('Background Image')->conditional('Background Type', '==', 'image')
-            ->addColorPicker('Top Background Color')->conditional('Background Type', '==', 'gradient')->setWidth('50')
-            ->addColorPicker('Bottom Background Color')->conditional('Background Type', '==', 'gradient')->setWidth('50')
         ;
     }
 }
