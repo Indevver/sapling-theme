@@ -99,8 +99,10 @@ add_filter('sapling_acf_builder_fields', function(array $fields): array {
     $advancedTab->addTab($fields['button']);
     $fields['divider'] = new Divider();
     $advancedTab->addTab($fields['divider']);
-    $fields['form'] = new Form();
-    $advancedTab->addTab($fields['form']);
+    if(class_exists('RGFormsModel')) {
+        $fields['form'] = new Form();
+        $advancedTab->addTab($fields['form']);
+    }
     $fields['gallery'] = new Gallery();
     $advancedTab->addTab($fields['gallery']);
     $fields['hero'] = new Hero($button_styles);
