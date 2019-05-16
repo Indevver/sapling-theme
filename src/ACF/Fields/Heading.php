@@ -4,11 +4,11 @@ namespace Sapling\ACF\Fields;
 use Sapling\ACF\Tabs\Headings;
 use StoutLogic\AcfBuilder\FieldsBuilder;
 
-class Title extends FieldsBuilder
+class Heading extends FieldsBuilder
 {
     public function __construct()
     {
-        parent::__construct('title', ['label' => 'Title']);
+        parent::__construct('heading', ['label' => 'Heading']);
         $this->addTab('Content')
             ->addSelect('Size', ['choices' => [
                 'h1' => 'Heading 1',

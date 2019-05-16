@@ -10,7 +10,7 @@ use Sapling\ACF\Fields\Image;
 use Sapling\ACF\Fields\Quote;
 use Sapling\ACF\Fields\Slider;
 use Sapling\ACF\Fields\Text;
-use Sapling\ACF\Fields\Title;
+use Sapling\ACF\Fields\Heading;
 use Sapling\ACF\Fields\Video;
 use Sapling\ACF\Tabs\Advanced;
 use Sapling\ACF\Tabs\Background;
@@ -113,8 +113,8 @@ add_filter('sapling_acf_builder_fields', function(array $fields): array {
     $advancedTab->addTab($fields['slider']);
     $fields['text'] = new Text();
     $advancedTab->addTab($fields['text']);
-    $fields['title'] = new Title();
-    $advancedTab->addTab($fields['title']);
+    $fields['heading'] = new Heading();
+    $advancedTab->addTab($fields['heading']);
     $fields['video'] = new Video();
     $advancedTab->addTab($fields['video']);
 
