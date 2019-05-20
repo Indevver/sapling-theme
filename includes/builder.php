@@ -22,9 +22,10 @@ use Sapling\ACF\Tabs\Text as TextTab;
 add_filter('sapling_acf_builder', function($section){
     $text_colors = apply_filters('sapling_acf_builder_text_colors', []);
     $background_colors = apply_filters('sapling_acf_builder_background_colors', []);
+    $overlay_colors = apply_filters('sapling_acf_builder_overlay_colors', []);
 
     $advancedTab = new Advanced();
-    $backgroundTab = new Background($background_colors);
+    $backgroundTab = new Background($background_colors, $overlay_colors);
     $spaceAlignTab = new Spacing();
     $textTab = new TextTab($text_colors);
     $headingTab = new HeadingTab();
@@ -66,6 +67,20 @@ add_filter('sapling_acf_builder_background_colors', function(array $colors): arr
     ];
 });
 
+add_filter('sapling_acf_builder_overlay_colors', function(array $colors): array{
+    return [
+        "0, 123, 255"    => "Blue",
+        "23, 162, 184"   => "Light Blue",
+        "40, 167, 69"    => "Green",
+        "220, 53, 69"    => "Red",
+        "255, 193, 7"    => "Yellow",
+        "52, 58, 64"     => "Dark",
+        "108, 117, 125"  => "Grey",
+        "248, 249, 250"  => "Light",
+        "255, 255, 255"  => "White",
+    ];
+});
+
 add_filter('sapling_acf_builder_button_styles', function(array $colors): array{
     return [
         "btn-primary"           => "Blue",
@@ -91,6 +106,7 @@ add_filter('sapling_acf_builder_button_styles', function(array $colors): array{
 add_filter('sapling_acf_builder_fields', function(array $fields): array {
     $text_colors = apply_filters('sapling_acf_builder_text_colors', []);
     $background_colors = apply_filters('sapling_acf_builder_background_colors', []);
+    $overlay_colors = apply_filters('sapling_acf_builder_overlay_colors', []);
     $button_styles = apply_filters('sapling_acf_builder_button_styles', []);
 
     $advancedTab = new Advanced();

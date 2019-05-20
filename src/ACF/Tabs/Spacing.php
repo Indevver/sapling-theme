@@ -17,14 +17,64 @@ class Spacing
             ->addTab('Spacing')
             ->addTrueFalse('Full Width')->setWidth(50)
             ->addText('Max Width')->setWidth(50)
-            ->addText('Margin Top')->setWidth(25)
-            ->addText('Margin Right')->setWidth(25)
-            ->addText('Margin Bottom')->setWidth(25)
-            ->addText('Margin Left')->setWidth(25)
-            ->addText('Padding Top')->setWidth(25)
-            ->addText('Padding Right')->setWidth(25)
-            ->addText('Padding Bottom')->setWidth(25)
-            ->addText('Padding Left')->setWidth(25)
+            ->addSelect('Margin Top', ['choices' => [
+                '' => 'Default',
+                'mt-none' => 'None',
+                'mt-small' => 'Small',
+                'mt-medium' => 'Medium',
+                'mt-large' => 'Large',
+            ]])->setWidth(25)
+            ->addSelect('Margin Right', ['choices' => [
+                '' => 'Default',
+                'mr-none' => 'None',
+                'mr-small' => 'Small',
+                'mr-medium' => 'Medium',
+                'mr-large' => 'Large',
+                'mr-auto' => 'None',
+            ]])->setWidth(25)
+            ->addSelect('Margin Bottom', ['choices' => [
+                '' => 'Default',
+                'mb-none' => 'None',
+                'mb-small' => 'Small',
+                'mb-medium' => 'Medium',
+                'mb-large' => 'Large',
+            ]])->setWidth(25)
+            ->addSelect('Margin Left', ['choices' => [
+                '' => 'Default',
+                'ml-none' => 'None',
+                'ml-small' => 'Small',
+                'ml-medium' => 'Medium',
+                'ml-large' => 'Large',
+                'ml-auto' => 'None',
+            ]])->setWidth(25)
+            ->addSelect('Padding Top', ['choices' => [
+                '' => 'Default',
+                'pt-none' => 'None',
+                'pt-small' => 'Small',
+                'pt-medium' => 'Medium',
+                'pt-large' => 'Large',
+            ]])->setWidth(25)
+            ->addSelect('Padding Right', ['choices' => [
+                '' => 'Default',
+                'pr-none' => 'None',
+                'pr-small' => 'Small',
+                'pr-medium' => 'Medium',
+                'pr-large' => 'Large',
+            ]])->setWidth(25)
+            ->addSelect('Padding Bottom', ['choices' => [
+                '' => 'Default',
+                'pb-none' => 'None',
+                'pb-small' => 'Small',
+                'pb-medium' => 'Medium',
+                'pb-large' => 'Large',
+            ]])->setWidth(25)
+            ->addSelect('Padding Left', ['choices' => [
+                '' => 'Default',
+                'pl-none' => 'None',
+                'pl-small' => 'Small',
+                'pl-medium' => 'Medium',
+                'pl-large' => 'Large',
+            ]])->setWidth(25)
         ;
     }
 }

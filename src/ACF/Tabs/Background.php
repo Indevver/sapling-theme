@@ -12,10 +12,12 @@ namespace Sapling\ACF\Tabs;
 class Background
 {
     private $background_colors = [];
+    private $overlay_colors = [];
 
-    public function __construct(array $background_colors)
+    public function __construct(array $background_colors, array $overlay_colors)
     {
         $this->background_colors = $background_colors;
+        $this->overlay_colors = $overlay_colors;
     }
 
     public function addTab(&$builder)
@@ -26,11 +28,13 @@ class Background
                 'choices' => [
                     '' => 'None',
                     'solid' => 'Solid',
-                    'image' => 'Image'
+                    'image' => 'Image',
+                    'overlay' => 'Image with overlay',
                 ]
             ])
             ->addSelect('Background Color', ['choices' => $this->background_colors])->conditional('Background Type', '==', 'solid')
-            ->addImage('Background Image')->conditional('Background Type', '==', 'image')
+            ->addSelect('Overlay Color', ['choices' => $this->overlay_colors])->conditional('Background Type', '==', 'overlay')
+            ->addImage('Background Image')->conditional('Background Type', '!=', 'solid')
         ;
     }
 }

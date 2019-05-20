@@ -6,7 +6,6 @@
                 {%- if row['Text Alignment'] %} {{ row['Text Alignment'] }} {% endif -%}
                 {%- if row['Text Color'] %} {{ row['Text Color'] }} {% endif -%}
                 {%- if row['Background Type'] == "solid" %} {{ row['Background Color'] }} {% endif -%}
-                {%- if not row['Full Width'] %} container {% endif -%}
             "
             id="{{ row.ID }}"
             style="
@@ -14,23 +13,36 @@
                     background-image: url({{ Image(row['Background Image']).src }});
                     background-size: cover;
                     background-repeat: no-repeat;
+                {%- elseif row['Background Type'] == "overlay" -%}
+                        background:
+                        linear-gradient(
+                          rgba({{ row['Overlay Color'] }}, 0.45),
+                          rgba({{ row['Overlay Color'] }}, 0.45)
+                        ),
+                        url({{ Image(row['Background Image']).src }});
+                        background-size: cover;
+                        background-repeat: no-repeat;
                 {%- elseif row['Background Type'] == "gradient" -%}
                         background-image: linear-gradient(to bottom, {{ row['Top Background Color'] }}, {{ row['Bottom Background Color'] }});
                 {%- endif -%}
                 {%- if row['Max Width'] -%}max-width: {{ row['Max Width'] }};{%- endif -%}
-                {%- if row['Margin Top'] -%}margin-top: {{ row['Margin Top'] }};{%- endif -%}
-                {%- if row['Margin Right'] -%}margin-right: {{ row['Margin Right'] }};{%- endif -%}
-                {%- if row['Margin Bottom'] -%}margin-bottom: {{ row['Margin Bottom'] }};{%- endif -%}
-                {%- if row['Margin Left'] -%}margin-left: {{ row['Margin Left'] }};{%- endif -%}
-                {%- if row['Padding Top'] -%}padding-top: {{ row['Padding Top'] }};{%- endif -%}
-                {%- if row['Padding Right'] -%}padding-right: {{ row['Padding Right'] }};{%- endif -%}
-                {%- if row['Padding Bottom'] -%}padding-bottom: {{ row['Padding Bottom'] }};{%- endif -%}
-                {%- if row['Padding Left'] -%}padding-left: {{ row['Padding Left'] }};{%- endif -%}
             "
         >
-            {% if row['Heading'] %}<{{ row['Heading Size'] ?? 'h2' }}>{{ row['Heading'] }}</{{ row['Heading Size'] ?? 'h2' }}>{% endif %}
-            <div class="row">
-                {% include 'builder/Columns/columns-'~row.Columns~'.twig' %}
+            <div class="{%- if not row['Full Width'] %} container {% endif -%}
+                    {%- if row['Margin Top'] %} {{ row['Margin Top'] }} {% endif -%}
+                    {%- if row['Margin Right'] %} {{ row['Margin Right'] }} {% endif -%}
+                    {%- if row['Margin Bottom'] %} {{ row['Margin Bottom'] }} {% endif -%}
+                    {%- if row['Margin Left'] %} {{ row['Margin Left'] }} {% endif -%}
+                    {%- if row['Padding Top'] %} {{ row['Padding Top'] }} {% endif -%}
+                    {%- if row['Padding Right'] %} {{ row['Padding Right'] }} {% endif -%}
+                    {%- if row['Padding Bottom'] %} {{ row['Padding Bottom'] }} {% endif -%}
+                    {%- if row['Padding Left'] %} {{ row['Padding Left'] }} {% endif -%}
+                    "
+            >
+                {% if row['Heading'] %}<{{ row['Heading Size'] ?? 'h2' }}>{{ row['Heading'] }}</{{ row['Heading Size'] ?? 'h2' }}>{% endif %}
+                <div class="row">
+                    {% include 'builder/Columns/columns-'~row.Columns~'.twig' %}
+                </div>
             </div>
         </section>
     {% else %}

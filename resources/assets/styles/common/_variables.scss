@@ -10,3 +10,8 @@ $theme-colors: (
 /** Bootstrap navbar fix (https://git.io/fADqW) */
 $navbar-dark-toggler-icon-bg: none;
 $navbar-light-toggler-icon-bg: none;
+
+// spacing for section padding/margin
+$spacing-small: 15px;
+$spacing-medium: 30px;
+$spacing-large: 60px;

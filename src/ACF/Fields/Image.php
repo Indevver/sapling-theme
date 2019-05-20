@@ -12,9 +12,9 @@ class Image extends FieldsBuilder
         $this->addTab('Content')
             ->addField('Image Alignment', 'button_group', [
                 'choices' => [
-                    "left" => "<span class=\"dashicons dashicons-align-left\"></span>",
-                    "center" => "<span class=\"dashicons dashicons-align-center\"></span>",
-                    "right" => "<span class=\"dashicons dashicons-align-right\"></span>",
+                    "text-left" => "<span class=\"dashicons dashicons-align-left\"></span>",
+                    "text-center" => "<span class=\"dashicons dashicons-align-center\"></span>",
+                    "text-right" => "<span class=\"dashicons dashicons-align-right\"></span>",
                 ]
             ])
             ->addImage('Image')->setWidth('50')
