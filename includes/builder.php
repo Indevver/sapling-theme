@@ -1,23 +1,20 @@
 <?php
 
-use Sapling\ACF\Fields\Button;
-use Sapling\ACF\Fields\Divider;
-use Sapling\ACF\Fields\Form;
-use Sapling\ACF\Fields\Gallery;
-use Sapling\ACF\Fields\Grid;
-use Sapling\ACF\Fields\Hero;
-use Sapling\ACF\Fields\Image;
-use Sapling\ACF\Fields\Quote;
-use Sapling\ACF\Fields\Slider;
-use Sapling\ACF\Fields\Text;
-use Sapling\ACF\Fields\Heading;
-use Sapling\ACF\Fields\Video;
-use Sapling\ACF\Tabs\Advanced;
-use Sapling\ACF\Tabs\Background;
-use Sapling\ACF\Tabs\Design;
-use Sapling\ACF\Tabs\Heading as HeadingTab;
-use Sapling\ACF\Tabs\Spacing;
-use Sapling\ACF\Tabs\Text as TextTab;
+use Sapling\Plugin\ACF\Fields\Button;
+use Sapling\Plugin\ACF\Fields\Divider;
+use Sapling\Plugin\ACF\Fields\Form;
+use Sapling\Plugin\ACF\Fields\Gallery;
+use Sapling\Plugin\ACF\Fields\Hero;
+use Sapling\Plugin\ACF\Fields\Image;
+use Sapling\Plugin\ACF\Fields\Slider;
+use Sapling\Plugin\ACF\Fields\Text;
+use Sapling\Plugin\ACF\Fields\Heading;
+use Sapling\Plugin\ACF\Fields\Video;
+use Sapling\Plugin\ACF\Tabs\Advanced;
+use Sapling\Plugin\ACF\Tabs\Background;
+use Sapling\Plugin\ACF\Tabs\Heading as HeadingTab;
+use Sapling\Plugin\ACF\Tabs\Spacing;
+use Sapling\Plugin\ACF\Tabs\Text as TextTab;
 
 add_filter('sapling_acf_builder', function($section){
     $text_colors = apply_filters('sapling_acf_builder_text_colors', []);
