@@ -1,7 +1,7 @@
 // import external dependencies
 import 'jquery';
 import '@fancyapps/fancybox';
-import 'slick-carousel'
+import 'slick-carousel';
 import 'bootstrap';
 
 // import local dependencies

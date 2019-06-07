@@ -1,5 +1,10 @@
+import lozad from 'lozad';
+
 export default {
   init() {
+    const observer = lozad();
+    observer.observe();
+
     jQuery('.fancybox').fancybox({
 
     });

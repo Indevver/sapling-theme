@@ -2,11 +2,11 @@
 add_action('login_enqueue_scripts', function () {
     $logo = get_theme_mod('login_page_background_image', get_stylesheet_directory_uri().'/web/vectors/stellar-logo.svg');
     $bg_color = get_theme_mod('login_page_background_color', '#242121');
-    $box_color = get_theme_mod('login_page_box_color', '#f1f1f1');
+    $box_color = get_theme_mod('login_page_box_color', '#efefef');
     $text_color = get_theme_mod('login_font_color', '#242121');
-    $button_color = get_theme_mod('login_button_font_color', '#f1f1f1');
-    $button_background_color = get_theme_mod('login_button_background_color', '#d7df23');
-    $link_color = get_theme_mod('login_link_color', '#d7df23');
+    $button_color = get_theme_mod('login_button_font_color', '#efefef');
+    $button_background_color = get_theme_mod('login_button_background_color', '#d61f26');
+    $link_color = get_theme_mod('login_link_color', '#d61f26');
     echo <<<HTML
 <style>
     body.login { background-color: $bg_color; }

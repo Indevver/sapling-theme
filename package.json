@@ -79,6 +79,7 @@
     "@fancyapps/fancybox": "^3.5.7",
     "bootstrap": "v4.3.1",
     "jquery": "^3.3.1",
+    "lozad": "^1.9.0",
     "popper.js": "^1.14.7",
     "slick-carousel": "^1.8.1"
   }
