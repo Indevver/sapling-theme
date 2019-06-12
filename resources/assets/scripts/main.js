@@ -2,7 +2,6 @@
 import 'jquery';
 import '@fancyapps/fancybox';
 import 'slick-carousel';
-import 'bootstrap';
 
 // import local dependencies
 import Router from './util/Router';

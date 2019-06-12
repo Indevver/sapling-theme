@@ -1,29 +1,15 @@
-@import "common/variables";
-@import "~bootstrap/scss/bootstrap";
+@import "variables";
+@import "~bulma/bulma";
 @import "~@fancyapps/fancybox/dist/jquery.fancybox.min.css";
 @import "~slick-carousel/slick/slick";
 @import "~slick-carousel/slick/slick-theme";
 
-/** Import theme styles */
-@import "common/global";
-@import "components/typography";
-@import "components/buttons";
-@import "components/section";
-@import "components/comments";
-@import "components/forms";
-@import "components/wp-classes";
-@import "layouts/header";
-@import "layouts/sidebar";
-@import "layouts/footer";
-@import "layouts/pages";
-@import "layouts/posts";
-@import "layouts/tinymce";
-@import "blocks/text";
-@import "blocks/hero";
-@import "blocks/button";
-@import "blocks/divider";
-@import "blocks/gallery";
-@import "blocks/image";
-@import "blocks/slider";
-@import "blocks/title";
-@import "blocks/video";
+@import "common/wordpress";
+@import "common/type";
+
+img.shrink {
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  display: inline-block;
+}
