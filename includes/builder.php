@@ -1,5 +1,6 @@
 <?php
 
+use Sapling\Plugin\ACF\Fields\Title;
 use Sapling\Plugin\ACF\Fields\Button;
 use Sapling\Plugin\ACF\Fields\Divider;
 use Sapling\Plugin\ACF\Fields\Form;
@@ -126,6 +127,8 @@ add_filter('sapling_acf_builder_fields', function(array $fields): array {
     $advancedTab->addTab($fields['slider']);
     $fields['text'] = new Text();
     $advancedTab->addTab($fields['text']);
+    $fields['title'] = new Title();
+    $advancedTab->addTab($fields['title']);
     $fields['heading'] = new Heading();
     $advancedTab->addTab($fields['heading']);
     $fields['video'] = new Video();
