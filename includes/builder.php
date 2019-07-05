@@ -81,23 +81,16 @@ add_filter('sapling_acf_builder_overlay_colors', function(array $colors): array{
 
 add_filter('sapling_acf_builder_button_styles', function(array $colors): array{
     return [
-        "btn-primary"           => "Blue",
-        "btn-info"              => "Light Blue",
-        "btn-success"           => "Green",
-        "btn-danger"            => "Red",
-        "btn-warning"           => "Yellow",
-        "btn-light"             => "Light",
-        "btn-secondary"         => "Grey",
-        "btn-dark"              => "Dark",
-        "btn-outline-primary"   => "Outline Blue",
-        "btn-outline-info"      => "Outline Light Blue",
-        "btn-outline-success"   => "Outline Green",
-        "btn-outline-danger"    => "Outline Red",
-        "btn-outline-warning"   => "Outline Yellow",
-        "btn-outline-light"     => "Outline Light",
-        "btn-outline-secondary" => "Outline Grey",
-        "btn-outline-dark"      => "Outline Dark",
-        "btn-link"              => "Link",
+        "is-primary"     => "Teal",
+        "is-link"        => "Dark Blue",
+        "is-info"        => "Blue",
+        "is-success"     => "Green",
+        "is-warning"     => "Yellow",
+        "is-danger"      => "Red",
+        "is-white"       => "White",
+        "is-light"       => "Light",
+        "is-black"       => "Black",
+        "is-dark"        => "Dark",
     ];
 });
 
