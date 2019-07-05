@@ -1,7 +1,15 @@
 import lozad from 'lozad';
+import Vue from 'vue'
 
 export default {
   init() {
+      new Vue({
+          el: '#app',
+          data: {
+              message: 'Hello Vue!',
+          },
+      });
+
     const observer = lozad();
     observer.observe();
 

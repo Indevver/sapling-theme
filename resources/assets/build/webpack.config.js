@@ -126,6 +126,9 @@ let webpackConfig = {
       'node_modules',
     ],
     enforceExtension: false,
+    alias: {
+        vue: 'vue/dist/vue.js',
+    }
   },
   resolveLoader: {
     moduleExtensions: ['-loader'],
