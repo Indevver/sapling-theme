@@ -18,6 +18,7 @@
         "timber/timber": "^1.9",
         "stoutlogic/acf-builder": "^1.8",
         "symfony/yaml": "^4.2",
-        "symfony/config": "^4.2"
+        "symfony/config": "^4.2",
+        "symfony/dotenv": "^4.3"
     }
 }
