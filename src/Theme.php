@@ -39,24 +39,24 @@ class Theme
     protected function getAsset($asset)
     {
         $dist = get_theme_file_uri().'/../dist';
-        $manifestPath = get_theme_file_path().'/../dist/assets.json';
+        $manifestPath = get_theme_file_path().'/../dist/manifest.json';
         $manifest = file_exists($manifestPath) ? json_decode(file_get_contents($manifestPath), true) : [];
         $file = isset($manifest[$asset]) ? $manifest[$asset] : $asset;
 
-        return "{$dist}/{$file}";
+        return "{$dist}{$file}";
     }
 
     public function assets()
     {
-        wp_enqueue_style('sapling/main.css', $this->getAsset('styles/main.css'), false, null);
-        wp_enqueue_script('sapling/main.js', $this->getAsset('scripts/main.js'), ['jquery'], null, true);
-        add_editor_style($this->getAsset('styles/main.css'));
+        wp_enqueue_style('sapling/main.css', $this->getAsset('app.css'), false, null);
+        wp_enqueue_script('sapling/main.js', $this->getAsset('app.js'), ['jquery'], null, true);
+        add_editor_style($this->getAsset('app.css'));
     }
 
     public function adminAssets()
     {
-        wp_enqueue_style( 'sapling/admin.css', $this->getAsset('styles/admin.css'), false );
-        wp_enqueue_script('sapling/admin.js', $this->getAsset('scripts/admin.js'), ['jquery'], null, true);
+        wp_enqueue_style( 'sapling/admin.css', $this->getAsset('admin.css'), false );
+        wp_enqueue_script('sapling/admin.js', $this->getAsset('admin.js'), ['jquery'], null, true);
     }
 
     public function sizes()
