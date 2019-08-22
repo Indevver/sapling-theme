@@ -26,9 +26,7 @@ add_filter('sapling_acf_builder', function($section){
     $backgroundTab = new Background($background_colors, $overlay_colors);
     $spaceAlignTab = new Spacing();
     $textTab = new TextTab($text_colors);
-    $headingTab = new HeadingTab();
 
-    $headingTab->addTab($section);
     $textTab->addTab($section);
     $backgroundTab->addTab($section);
     $spaceAlignTab->addTab($section);
@@ -122,8 +120,6 @@ add_filter('sapling_acf_builder_fields', function(array $fields): array {
     $advancedTab->addTab($fields['text']);
     $fields['title'] = new Title();
     $advancedTab->addTab($fields['title']);
-    $fields['heading'] = new Heading();
-    $advancedTab->addTab($fields['heading']);
     $fields['video'] = new Video();
     $advancedTab->addTab($fields['video']);
 
