@@ -48,6 +48,8 @@ class Theme
 
     public function assets()
     {
+        wp_deregister_script( 'jquery-core' );
+        wp_deregister_script( 'jquery-migrate' );
         wp_enqueue_style('sapling/main.css', $this->getAsset('app.css'), false, null);
         wp_enqueue_script('sapling/main.js', $this->getAsset('app.js'), ['jquery'], null, true);
         add_editor_style($this->getAsset('app.css'));
