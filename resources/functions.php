@@ -1,4 +1,13 @@
 <?php
+
+use GutenBlock\Accordion;
+use GutenBlock\Gallery;
+use GutenBlock\ModalBAP;
+use GutenBlock\ModalForm;
+use GutenBlock\PostGrid;
+use GutenBlock\Sample;
+use GutenBlock\Tabs;
+use GutenBlock\Truncated;
 use Sapling\Plugin\ACF\PageBuilder;
 use Sapling\Theme;
 use Symfony\Component\Dotenv\Dotenv;

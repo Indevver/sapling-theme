@@ -1,6 +1,7 @@
 <?php
 namespace Sapling;
 
+use Sapling\Plugin\Blocks\Sample;
 use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 use Timber\Menu;
 use Timber\Timber;
@@ -33,7 +34,15 @@ class Theme
         add_filter('after_setup_theme', [$this, 'sizes']);
         add_action('widgets_init', [$this, 'sidebars']);
         add_action('wp_enqueue_scripts', [$this, 'assets']);
-        add_action( 'admin_enqueue_scripts', [$this, 'adminAssets']);
+        add_action('admin_enqueue_scripts', [$this, 'adminAssets']);
+        add_filter('gutenblock_blocks', [$this, 'blocks']);
+    }
+
+    public function blocks (array $blocks) :array
+    {
+        $blocks[] = new Sample();
+
+        return $blocks;
     }
 
     protected function getAsset($asset)
