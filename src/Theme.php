@@ -41,7 +41,6 @@ class Theme
     public function blocks (array $blocks) :array
     {
         $blocks[] = new Sample();
-
         return $blocks;
     }
 
