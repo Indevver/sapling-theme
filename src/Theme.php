@@ -1,121 +1,147 @@
 <?php
+
 namespace Sapling;
 
+use Sapling\Plugin\AbstractTheme;
 use Sapling\Plugin\Blocks\Sample;
-use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
-use Timber\Menu;
-use Timber\Timber;
-use Twig\Environment;
 
-class Theme
+class Theme extends AbstractTheme
 {
-    protected $menus = [
-      'primary_menu'    => 'Primary Menu',
-      'topbar_menu'     => 'Top Bar Menu',
-    ];
-
-    protected $sidebars = [
-        [
-            'name'          => 'sidebar',
-            'id'            => 'sidebar',
-            'before_widget' => '<aside>',
-            'after_widget'  => '</aside>',
-            'before_title'  => '<h2>',
-            'after_title'   => '</h2>',
-        ]
-    ];
-
     public function __construct()
     {
-        add_filter('timber/context', [$this, 'context']);
-        add_filter('timber/twig', [$this, 'twig']);
-        add_filter('after_setup_theme', [$this, 'supports']);
-        add_filter('after_setup_theme', [$this, 'menus']);
-        add_filter('after_setup_theme', [$this, 'sizes']);
-        add_action('widgets_init', [$this, 'sidebars']);
-        add_action('wp_enqueue_scripts', [$this, 'assets']);
-        add_action('admin_enqueue_scripts', [$this, 'adminAssets']);
-        add_filter('gutenblock_blocks', [$this, 'blocks']);
+        parent::__construct();
     }
 
-    public function blocks (array $blocks) :array
+    public function sidebars() :array
+    {
+        return [
+            [
+                'name' => 'sidebar',
+                'id' => 'sidebar',
+                'before_widget' => '<aside>',
+                'after_widget' => '</aside>',
+                'before_title' => '<h2>',
+                'after_title' => '</h2>',
+            ]
+        ];
+    }
+
+    public function menus() :array {
+        return  [
+            'primary_menu' => 'Primary Menu',
+            'topbar_menu' => 'Top Bar Menu',
+        ];
+    }
+
+    public function blocks(array $blocks): array
     {
         $blocks[] = new Sample();
         return $blocks;
     }
 
-    protected function getAsset($asset)
+    public function colors(): array
     {
-        $dist = get_theme_file_uri().'/../dist';
-        $manifestPath = get_theme_file_path().'/../dist/manifest.json';
-        $manifest = file_exists($manifestPath) ? json_decode(file_get_contents($manifestPath), true) : [];
-        $file = isset($manifest[$asset]) ? $manifest[$asset] : $asset;
+        return [[
+                'name' => __('Primary'),
+                'slug' => 'primary',
+                'color' => '#101a2c',
+            ],
+            [
+                'name' => __('Success'),
+                'slug' => 'success',
+                'color' => '#87a52c',
+            ],
+            [
+                'name' => __('Info'),
+                'slug' => 'info',
+                'color' => '#3298dc',
+            ],
+            [
+                'name' => __('Warning'),
+                'slug' => 'warning',
+                'color' => '#ffdd57',
+            ],
+            [
+                'name' => __('Danger'),
+                'slug' => 'danger',
+                'color' => '#f14668',
+            ],
+            [
+                'name' => __('Black'),
+                'slug' => 'black',
+                'color' => '#000000',
+            ],
+            [
+                'name' => __('Dark'),
+                'slug' => 'dark',
+                'color' => '#363636',
+            ],
+            [
+                'name' => __('Grey'),
+                'slug' => 'grey',
+                'color' => '#eeeeee',
+            ],
+            [
+                'name' => __('Light'),
+                'slug' => 'light',
+                'color' => '#f5f5f5',
+            ],
+            [
+                'name' => __('White'),
+                'slug' => 'white',
+                'color' => '#ffffff',
+            ],
+        ];
+    }
 
-        return "{$dist}{$file}";
+    public function fonts() : array
+    {
+        return [
+            [
+                'name' => __('H1'),
+                'size' => 42,
+                'slug' => 'title-1'
+            ],
+            [
+                'name' => __('H2'),
+                'size' => 35,
+                'slug' => 'title-2'
+            ],
+            [
+                'name' => __('H3'),
+                'size' => 30,
+                'slug' => 'title-3'
+            ],
+            [
+                'name' => __('H4'),
+                'size' => 22,
+                'slug' => 'title-4'
+            ],
+        ];
+    }
+
+    public function imageSizes()
+    {
+//        add_image_size();
     }
 
     public function assets()
     {
-        wp_deregister_script( 'jquery-core' );
-        wp_deregister_script( 'jquery-migrate' );
         wp_enqueue_style('sapling/main.css', $this->getAsset('app.css'), false, null);
-        wp_enqueue_script('sapling/main.js', $this->getAsset('app.js'), ['jquery'], null, true);
+        wp_enqueue_script('sapling/runtime.js', $this->getAsset('runtime.js'), ['jquery'], null, true);
+        wp_enqueue_script('sapling/main.js', $this->getAsset('app.js'), ['jquery', 'sapling/runtime.js'], null, true);
         add_editor_style($this->getAsset('app.css'));
     }
 
     public function adminAssets()
     {
-        wp_enqueue_style( 'sapling/admin.css', $this->getAsset('admin.css'), false );
+        wp_enqueue_style('fontawesome', "https://use.fontawesome.com/releases/v5.8.1/css/all.css", false);
+        wp_enqueue_style('sapling/admin.css', $this->getAsset('admin.css'), ['fontawesome']);
         wp_enqueue_script('sapling/admin.js', $this->getAsset('admin.js'), ['jquery'], null, true);
     }
 
-    public function sizes()
+    public function editorAssets()
     {
-//        add_image_size();
-    }
-
-    public function menus()
-    {
-        register_nav_menus($this->menus);
-    }
-
-    public function sidebars()
-    {
-        foreach($this->sidebars as $widget)
-        {
-            register_sidebar($widget);
-        }
-    }
-
-    public function context(array $context)
-    {
-        foreach($this->sidebars as $widget)
-        {
-            if($widget_id = $widget['id'])
-            {
-                $context[$widget_id] = Timber::get_widgets($widget_id);
-            }
-        }
-
-        foreach($this->menus as $menu => $description)
-        {
-            $context[$menu] = new Menu($menu);
-        }
-
-        return $context;
-    }
-
-    public function twig(Environment $twig)
-    {
-        return $twig;
-    }
-
-    public function supports()
-    {
-        add_theme_support('html5', ['caption', 'comment-form', 'comment-list', 'gallery', 'search-form']);
-        add_theme_support('post-thumbnails');
-        add_theme_support('menus');
-        add_theme_support('title-tag');
-        add_theme_support('customize-selective-refresh-widgets');
+        wp_enqueue_script('be-editor', get_stylesheet_directory_uri() . '/../assets/js/editor.js', array('wp-blocks', 'wp-dom'), filemtime(get_stylesheet_directory() . '/../assets/js/editor.js'), true);
     }
 }
