@@ -8,6 +8,7 @@ Encore
     })
     .setOutputPath(process.env.OUTPUT_PATH)
     .setPublicPath(process.env.PUBLIC_PATH)
+    .setManifestKeyPrefix(process.env.PREFIX)
     .addEntry('app', './assets/js/app.js')
     .addEntry('admin', './assets/js/admin.js')
     .enableSingleRuntimeChunk()
