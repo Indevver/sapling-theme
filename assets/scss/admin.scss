@@ -1,2 +1,7 @@
-@import "variables";
-@import "~bulma/bulma";
+#editor .editor-styles-wrapper {
+  @import "variables";
+  @import "~bulma/bulma";
+
+  @import "common/wordpress";
+  @import "common/type";
+}
