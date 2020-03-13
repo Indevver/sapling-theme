@@ -7,9 +7,19 @@ use Sapling\Plugin\Blocks\Sample;
 
 class Theme extends AbstractTheme
 {
+    /**
+     * https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
+     * @var bool|string false removes jquery, true adds wordpress version, string adds the string url
+     */
+    private $jquery = false;
+
     public function __construct()
     {
         parent::__construct();
+        if($this->jquery && $this->jquery !== true) {
+            add_action('wp_default_scripts', [$this,  'swapDefaultScripts']);
+        }
+        add_action('wp_head', [$this, 'dequeue']);
     }
 
     public function sidebars() :array
@@ -125,11 +135,37 @@ class Theme extends AbstractTheme
 //        add_image_size();
     }
 
+    public function dequeue()
+    {
+        if (!is_user_logged_in()) {
+            wp_dequeue_style('dashicons');
+            wp_deregister_style( 'dashicons' );
+            wp_dequeue_style('admin-bar');
+            wp_deregister_style('admin-bar');
+            wp_dequeue_script('admin-bar');
+            wp_deregister_script('admin-bar');
+            if(!$this->jquery)
+            {
+                wp_dequeue_script('jquery');
+                wp_deregister_script('jquery');
+            }
+        }
+    }
+
+    public function swapDefaultScripts(&$scripts)
+    {
+        if(!is_admin()){
+            $scripts->remove( 'jquery');
+            $scripts->add( 'jquery', $this->jquery, [], '3.4.1' );
+        }
+    }
+
     public function assets()
     {
+        $this->dequeue();
         wp_enqueue_style('sapling/main.css', $this->getAsset('app.css'), false, null);
-        wp_enqueue_script('sapling/runtime.js', $this->getAsset('runtime.js'), ['jquery'], null, true);
-        wp_enqueue_script('sapling/main.js', $this->getAsset('app.js'), ['jquery', 'sapling/runtime.js'], null, true);
+        wp_enqueue_script('sapling/runtime.js', $this->getAsset('runtime.js'), [], null, true);
+        wp_enqueue_script('sapling/main.js', $this->getAsset('app.js'), ['sapling/runtime.js'], null, true);
         add_editor_style($this->getAsset('app.css'));
     }
 
@@ -137,7 +173,7 @@ class Theme extends AbstractTheme
     {
         wp_enqueue_style('fontawesome', "https://use.fontawesome.com/releases/v5.8.1/css/all.css", false);
         wp_enqueue_style('sapling/admin.css', $this->getAsset('admin.css'), ['fontawesome']);
-        wp_enqueue_script('sapling/admin.js', $this->getAsset('admin.js'), ['jquery'], null, true);
+        wp_enqueue_script('sapling/admin.js', $this->getAsset('admin.js'), [], null, true);
     }
 
     public function editorAssets()
