@@ -25,7 +25,7 @@ else if(is_page())
 }
 else if(is_single())
 {
-    array_unshift($templates, 'pages/single'.get_post_type().'.twig', 'pages/single.twig');
+    array_unshift($templates, 'pages/single-'.get_post_type().'.twig', 'pages/single.twig');
     $context['post'] = new Post();
 }
 else if(is_archive())
