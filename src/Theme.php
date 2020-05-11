@@ -11,7 +11,7 @@ class Theme extends AbstractTheme
      * https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js
      * @var bool|string false removes jquery, true adds wordpress version, string adds the string url
      */
-    private $jquery = false;
+    private $jquery = true;
 
     public function __construct()
     {
