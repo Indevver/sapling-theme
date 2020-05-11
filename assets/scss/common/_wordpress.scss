@@ -134,7 +134,7 @@ img.shrink {
 html.has-navbar-fixed-top,
 body.has-navbar-fixed-top {
   padding-top: 85px;
-  @include tablet {
+  @include media-breakpoint-up(md) {
     padding-top: 115px;
   }
 }
