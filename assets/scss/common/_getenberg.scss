@@ -1,0 +1,182 @@
+$colors-list: "primary" "info" "warning" "danger" "black" "dark" "grey" "light" "white";
+@each $current-color in $colors-list {
+  .has-#{$current-color}-color {
+    @extend .has-text-#{$current-color};
+  }
+}
+
+@each $current-color in $colors-list {
+  .has-#{$current-color}-background-color {
+    @extend .has-background-#{$current-color};
+  }
+}
+
+$order-list: 1 2 3 4 5 6 7 8 9 10 11 12;
+@each $order in $order-list {
+  .order-#{$order} {
+    @include tablet {
+      order: #{$order};
+    }
+  }
+}
+.wp-block-coblocks-column.order-1 {
+  @include tablet {
+    margin-left: 0;
+    margin-right: 1rem;
+  }
+}
+.wp-block-coblocks-column.order-2 {
+  @include tablet {
+    margin-right: 0;
+    margin-left: 1rem;
+  }
+}
+
+$margin-list: 0 1 2 3 4 5 6 7 8 9 10 11 12;
+@each $order in $order-list {
+  .mt-#{$order} {
+    margin-top: #{$order}rem !important;
+  }
+  .mb-#{$order} {
+    margin-bottom: #{$order}rem !important;
+  }
+  .mr-#{$order} {
+    margin-right: #{$order}rem !important;
+  }
+  .ml-#{$order} {
+    margin-left: #{$order}rem !important;
+  }
+  @include mobile {
+    .mt-mobile-#{$order} {
+      margin-top: #{$order}rem !important;
+    }
+    .mb-mobile-#{$order} {
+      margin-bottom: #{$order}rem !important;
+    }
+    .mr-mobile-#{$order} {
+      margin-right: #{$order}rem !important;
+    }
+    .ml-mobile-#{$order} {
+      margin-left: #{$order}rem !important;
+    }
+  }
+  @include tablet {
+    .mt-tablet-#{$order} {
+      margin-top: #{$order}rem !important;
+    }
+    .mb-tablet-#{$order} {
+      margin-bottom: #{$order}rem !important;
+    }
+    .mr-tablet-#{$order} {
+      margin-right: #{$order}rem !important;
+    }
+    .ml-tablet-#{$order} {
+      margin-left: #{$order}rem !important;
+    }
+  }
+  @include desktop {
+    .mt-desktop-#{$order} {
+      margin-top: #{$order}rem !important;
+    }
+    .mb-desktop-#{$order} {
+      margin-bottom: #{$order}rem !important;
+    }
+    .mr-desktop-#{$order} {
+      margin-right: #{$order}rem !important;
+    }
+    .ml-desktop-#{$order} {
+      margin-left: #{$order}rem !important;
+    }
+  }
+}
+
+$padding-list: 0 1 2 3 4 5 6 7 8 9 10 11 12;
+@each $order in $order-list {
+  .pt-#{$order} {
+    padding-top: #{$order}rem !important;
+  }
+  .pb-#{$order} {
+    padding-bottom: #{$order}rem !important;
+  }
+  .pr-#{$order} {
+    padding-right: #{$order}rem !important;
+  }
+  .pl-#{$order} {
+    padding-left: #{$order}rem !important;
+  }
+  @include mobile {
+    .pt-mobile-#{$order} {
+      padding-top: #{$order}rem !important;
+    }
+    .pb-mobile-#{$order} {
+      padding-bottom: #{$order}rem !important;
+    }
+    .pr-mobile-#{$order} {
+      padding-right: #{$order}rem !important;
+    }
+    .pl-mobile-#{$order} {
+      padding-left: #{$order}rem !important;
+    }
+  }
+  @include tablet {
+    .pt-tablet-#{$order} {
+      padding-top: #{$order}rem !important;
+    }
+    .pb-tablet-#{$order} {
+      padding-bottom: #{$order}rem !important;
+    }
+    .pr-tablet-#{$order} {
+      padding-right: #{$order}rem !important;
+    }
+    .pl-tablet-#{$order} {
+      padding-left: #{$order}rem !important;
+    }
+  }
+  @include desktop {
+    .pt-desktop-#{$order} {
+      padding-top: #{$order}rem !important;
+    }
+    .pb-desktop-#{$order} {
+      padding-bottom: #{$order}rem !important;
+    }
+    .pr-desktop-#{$order} {
+      padding-right: #{$order}rem !important;
+    }
+    .pl-desktop-#{$order} {
+      padding-left: #{$order}rem !important;
+    }
+  }
+}
+
+.wp-block-coblocks-row {
+  @extend .container;
+}
+
+.wp-block-coblocks-row[data-columns="1"] .wp-block-coblocks-column__inner > [class*="wp-block-"] {
+  max-width: none;
+}
+
+.is-vcentered .wp-block-coblocks-row__inner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wp-block-group,
+.wp-block-group.has-background {
+  padding: 0;
+}
+
+.wp-block-coblocks-row .wp-block-coblocks-column {
+  @include mobile {
+    padding: 0 30px;
+
+    .wp-block-coblocks-column {
+      padding: 0;
+    }
+  }
+}
+
+.wp-block-coblocks-row .wp-block-coblocks-row__inner.is-stacked-on-mobile.has-medium-gutter > [class*="wp-block"]:not(:last-child) {
+  margin-bottom: 0;
+}

@@ -130,3 +130,21 @@ img.shrink {
     width: 100%;
   }
 }
+
+html.has-navbar-fixed-top,
+body.has-navbar-fixed-top {
+  padding-top: 85px;
+  @include tablet {
+    padding-top: 115px;
+  }
+}
+
+#wpadminbar {
+  position: fixed;
+}
+.admin-bar .navbar.is-fixed-top {
+  top:45px;
+  @media only screen and (min-width: 782px) {
+    top: 32px;
+  }
+}
