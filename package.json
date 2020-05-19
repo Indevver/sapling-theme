@@ -70,7 +70,7 @@
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.4.1",
     "dotenv": "^8.1.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "popper.js": "^1.14.7",
     "slick-carousel": "^1.8.1",
     "vue": "^2.6.10",
